@@ -1,5 +1,5 @@
 //
-//  CustomerWebView.m
+//  CustomerImgButtonView.m
 //  DelegateSample
 //
 //  Created by yeluxing on 15/9/21.
@@ -9,7 +9,7 @@
 #import "CustomerImgButtonView.h"
 
 
-@interface CustomerWebView()
+@interface CustomerView()
 {
     UIButton* btn;
     UIImageView* imgview;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation CustomerWebView
+@implementation CustomerView
 
 -(void)setTitle:(NSString *)title
 {
@@ -30,10 +30,9 @@
     
 }
 
-
+//用户自定义view 初始化
 -(void)init:(NSString *)title image:(UIImage *)image
 {
-    
     
     imgview  = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - 40)];
     imgview.image = image;
@@ -49,7 +48,7 @@
     [self addSubview:btn];
     
 }
-
+//定义点击事件
 -(void)btnclick:(id)sender
 {
     [self.customerviewDelegate onCustomerViewClick:sender];

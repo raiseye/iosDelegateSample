@@ -1,7 +1,5 @@
 //
-//  ViewControllerFirst.m
-//  DelegateSample
-//
+//  UseDelegateViewController.m
 //  Created by yeluxing on 15/9/18.
 //  Copyright (c) 2015年 yeluxing. All rights reserved.
 //
@@ -23,10 +21,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark 实现委托方法
 -(void)clickToSendValues:(NSString*) values
 {
    
+    UILabel * showLable =[[UILabel alloc] initWithFrame:CGRectMake(10,10,100,30)];
+    showLable.text = values;
+    
     NSLog(@"receive values:%@", values);
     
 }

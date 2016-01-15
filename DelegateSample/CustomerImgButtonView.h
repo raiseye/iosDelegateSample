@@ -1,5 +1,5 @@
 //
-//  CustomerWebView.h
+//  CustomerImgButtonView.h
 //  DelegateSample
 //
 //  Created by yeluxing on 15/9/21.
@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @protocol CustomerImgButtonView
+//定义点击协议方法
 -(void)onCustomerViewClick:(UIButton *) sender;
 
 @end
 
-@interface CustomerWebView : UIView
+@interface CustomerView : UIView
 
-@property (nonatomic,strong) id delegaterViewController;
+//@property (nonatomic,strong) id delegaterViewController;
 
 -(void)setImage:(UIImage*)img;
 
