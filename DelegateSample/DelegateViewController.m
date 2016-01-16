@@ -8,15 +8,16 @@
 
 #import "UseDelegateViewController.h"
 #import "DelegateViewController.h"
-
-@protocol NextViewControllerDelegate <NSObject>
-- (void)passTextValue:(NSString *)tfText;
-@end
+#import "AppDelegate.h"
+//@protocol NextViewControllerDelegate <NSObject>
+//- (void)passTextValue:(NSString *)tfText;
+//@end
 
 @interface DelegateViewController ()
 {
     
-    UseDelegateViewController * cal;
+    UseDelegateViewController * UVC;
+    AppDelegate* myDelegate;
 }
 @end
 
@@ -24,23 +25,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    myDelegate  = [[UIApplication sharedApplication] delegate];
     //初始化
-    cal = [[UseDelegateViewController alloc] init];
-    
-    self.delegate = (id)cal;
+    UVC = [[UseDelegateViewController alloc] init];
+    //因为UseDelegateViewController继承了DelegateViewControllerDelegate，所以可以＝
+    self.delegate = (id)UVC;
     
     //[self.delegate clickToSendValues:@"title" ];
     
     
     //定义一个自定义类型CustomerView的变量，用它来测试代理方法
-    CustomerView * cview = [[CustomerView alloc]initWithFrame:CGRectMake(2, 150, 150, 150) ];
-    cview.backgroundColor  = [UIColor redColor];
+    CustomerView * cView = [[CustomerView alloc]initWithFrame:CGRectMake(2, 150, 150, 150) ];
+    cView.backgroundColor  = [UIColor redColor];
     //初始化用户自定义控件
-    [cview init:@"CLICK" image:[UIImage imageNamed:@"skyblue_logo_qq_checked"]];
+    [cView init:@"CLICK" image:[UIImage imageNamed:@"skyblue_logo_qq_checked"]];
     //指定控件的代理为self,所以DelegateViewController内要实现这个代理的方法
-    cview.customerviewDelegate = (id)self;
+    cView.customerviewDelegate = (id)self;
     
-    [self.view addSubview:cview];
+    [self.view addSubview:cView];
     
     
 }
@@ -50,18 +52,19 @@
    
 }
 
-
 #pragma
 - (IBAction)clickdelegate:(id)sender {
     
     NSString* val = _inputTF.text;
     //调用委托的方法
     [self.delegate clickToSendValues:val];
+    [myDelegate.navRootVC pushViewController:UVC animated:YES];
 }
-//实现cview的代理方法
+#pragma mark  实现cview的代理方法
 -(void)onCustomerViewClick:(UIButton*)sender
 {
-    NSLog(@"onclick ok!");
+    NSLog(@"引用主体中执行onclick ok!");
+    
 }
 
 @end

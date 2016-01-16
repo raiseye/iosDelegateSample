@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DelegateViewController.h"
+#import "UseDelegateViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,15 +19,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds] ];
+//    实例化第一个viewcontroller
+    DelegateViewController * dVC  = [[DelegateViewController alloc]initWithNibName:@"DelegateViewController" bundle:nil];
+//   实例化第二个viewcontroller
+    UseDelegateViewController * uVC = [[UseDelegateViewController alloc] initWithNibName:@"UseDelegateViewController" bundle:nil];
+//    实例化navigationcontrollerb并设置根viewcontroller
+   self. navRootVC = [[UINavigationController alloc] initWithRootViewController:dVC];
     
-    DelegateViewController * rvc  = [[DelegateViewController alloc]initWithNibName:@"DelegateViewController" bundle:nil];
     
-    self.window.rootViewController =rvc;
+
     
+    
+    self.window.rootViewController =self.navRootVC;
     
     [self.window makeKeyAndVisible];
-    
-    
     
     return YES;
 }

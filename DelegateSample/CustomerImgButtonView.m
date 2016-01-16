@@ -48,9 +48,10 @@
     [self addSubview:btn];
     
 }
-//定义点击事件
+//实现点击事件
 -(void)btnclick:(id)sender
 {
+     NSLog(@"原控件事件中执行onclick ok!");
     [self.customerviewDelegate onCustomerViewClick:sender];
 }
 /*

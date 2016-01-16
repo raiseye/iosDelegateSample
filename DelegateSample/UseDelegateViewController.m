@@ -3,6 +3,7 @@
 //  Created by yeluxing on 15/9/18.
 //  Copyright (c) 2015年 yeluxing. All rights reserved.
 //
+//
 
 #import "UseDelegateViewController.h"
 
@@ -24,11 +25,11 @@
 #pragma mark 实现委托方法
 -(void)clickToSendValues:(NSString*) values
 {
-   
-    UILabel * showLable =[[UILabel alloc] initWithFrame:CGRectMake(10,10,100,30)];
-    showLable.text = values;
-    
-    NSLog(@"receive values:%@", values);
+//   把接收到的值显示出来
+    UILabel * showLable =[[UILabel alloc] initWithFrame:CGRectMake(10,100,300,30)];
+    showLable.text = [NSString stringWithFormat:@"接收到:%@",values];
+    [self.view addSubview:showLable];
+    NSLog(@"接收到receive values:%@", values);
     
 }
 
