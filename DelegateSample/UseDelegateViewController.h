@@ -1,6 +1,5 @@
 //
 //  UseDelegateViewController.m
-//  DelegateSample
 //  第二个窗口，用一接收第一个窗口发送的值
 //  Created by yeluxing on 15/9/18.
 //  Copyright (c) 2015年 yeluxing. All rights reserved.
